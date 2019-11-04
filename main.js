@@ -7,20 +7,69 @@
 //The function should never return undefined
 
 function operateOn(firstNumber, secondNumber, operation) {
+	var result =0
+	return function add (){
+		result=firstNumber + secondNumber
+
+	}
+
+
   //TODO: your code here
 }
 
 //========================================================== 2
 //Write a function called addArrays that takes two arrays as parameters (firstArray, secondArray)
+function addArrays(firstArray, secondArray) {
+	var result =[]
+	if (firstArray.length <= secondArray.length){
+		for (var i =0 ;i < firstArray.length ; i++) {
+			result.push(firstArray[i]+secondArray[i])
+
+		} 
+	}else {
+			for (var i =0 ;i < secondArray.length ; i++){
+				result.push(firstArray[i]+secondArray[i])
+			}
+
+		
+	}
+	return result;
+}
 //The function adds the elements with matching indexes to each other and returns the results in an array
 //If the arrays are of different length the function should add 1 to the elements that don’t having matching indexes in the other
 //Write the function using while loop and for loop
 
 function addArraysWhileLoop(firstArray, secondArray) {
+
+function addArraysForLoop(firstArray, secondArray) {
+		var result=[]; 
+	var second=[]
+	var first=[]
+	if (firstArray.length = secondArray.length) {
+		for (var i =0 ;i < firstArray.length ; i++){
+		result.push(firstArray[i]+secondArray[i])
+		}
+		return result
+
+
+	}
+	else {
+		if (firstArray.length > secondArray.length){
+			for (var i= 0 ;i<secondArray.length; i++){
+				first.push(firstArray[i]+secondArray[i])
+			}
+			for (var i = secondArray.length; i<firstArray.length; i++){
+				second.push(firstArray[i]+1)
+			}
+		}
+		
+		
+	}
+	return first.concat(second)
+	
   //TODO: your code here
 }
 
-function addArraysForLoop(firstArray, secondArray) {
   //TODO: you code here
 }
 
@@ -45,6 +94,8 @@ var bucketOfSloths = [
 // fullName(bucketOfSloths,0) //==> "Furry Danger Assassin"
 
 function fullName(array, index) {
+	return array[index].first+ " "+array[index].middle+" "+array[index].last
+
   //your code is here
 }
 
@@ -56,6 +107,7 @@ function fullName(array, index) {
 // => {name: {first: "Furry", middle: "Danger", last: "Assassin"}, age: 2}
 
 function longestName(bucketOfSloths) {
+	for (var i in bucketOfSloths )
   // TODO: Your code here
 }
 
