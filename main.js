@@ -7,75 +7,95 @@
 //The function should never return undefined
 
 function operateOn(firstNumber, secondNumber, operation) {
-	var result =0
-	return function add (){
-		result=firstNumber + secondNumber
-
-	}
+if (operation === 0) {
+		return firstNumber + secondNumber;
+	}else if (operation ===1) {
+		return firstNumber * secondNumber
+	}else if (operation ===2) {
+		if(secondNumber !== 0) {
+			return firstNumber/secondNumber;
+		}else {
+			return "secondNumber shoud be different to zero"
+		}
+    } else {
+    	return "Nothing to Operate On"; 
+    }
+}
 
 
   //TODO: your code here
-}
+
 
 //========================================================== 2
 //Write a function called addArrays that takes two arrays as parameters (firstArray, secondArray)
-function addArrays(firstArray, secondArray) {
-	var result =[]
-	if (firstArray.length <= secondArray.length){
-		for (var i =0 ;i < firstArray.length ; i++) {
-			result.push(firstArray[i]+secondArray[i])
-
-		} 
-	}else {
-			for (var i =0 ;i < secondArray.length ; i++){
-				result.push(firstArray[i]+secondArray[i])
-			}
-
-		
-	}
-	return result;
-}
 //The function adds the elements with matching indexes to each other and returns the results in an array
 //If the arrays are of different length the function should add 1 to the elements that don’t having matching indexes in the other
 //Write the function using while loop and for loop
 
 function addArraysWhileLoop(firstArray, secondArray) {
+var result=[]; 
+if (firstArray.length >= secondArray.length){
+	           var i= 0 ;
+			  while (i<secondArray.length ){
+				result.push(firstArray[i]+secondArray[i])
+				i++
+			   }
+			   var j = secondArray.length;
+			   while ( j<firstArray.length ){
+				result.push(firstArray[j]+1)
+				j++
+			    }
+	}else	{
+		      var i= 0 ;
+		      while (i<firstArray.length ){
+				result.push(firstArray[i]+secondArray[i])
+				i++
+			   }
+			   var j = firstArray.length;
+			   while ( j<secondArray.length ){
+				result.push(secondArray[j]+1)
+				j++
+			    }
+	}    
+return result
 
-function addArraysForLoop(firstArray, secondArray) {
-		var result=[]; 
-	var second=[]
-	var first=[]
-	if (firstArray.length = secondArray.length) {
-		for (var i =0 ;i < firstArray.length ; i++){
-		result.push(firstArray[i]+secondArray[i])
-		}
-		return result
-
-
-	}
-	else {
-		if (firstArray.length > secondArray.length){
-			for (var i= 0 ;i<secondArray.length; i++){
-				first.push(firstArray[i]+secondArray[i])
-			}
-			for (var i = secondArray.length; i<firstArray.length; i++){
-				second.push(firstArray[i]+1)
-			}
-		}
-		
-		
-	}
-	return first.concat(second)
-	
-  //TODO: your code here
 }
 
+function addArraysForLoop(firstArray, secondArray) {
+  //TODO: your code here
+var result=[]; 
+if (firstArray.length >= secondArray.length){
+			  for (var i= 0 ;i<secondArray.length; i++){
+				result.push(firstArray[i]+secondArray[i])
+			   }
+			   for (var j = secondArray.length; j<firstArray.length; j++){
+				result.push(firstArray[j]+1)
+			    }
+	}else	{
+		for (var i= 0 ;i<firstArray.length; i++){
+				result.push(firstArray[i]+secondArray[i])
+			   }
+			   for (var j = firstArray.length; j<secondArray.length; j++){
+				result.push(secondArray[j]+1)
+			    }
+	}    
+return result
   //TODO: you code here
 }
 
 //=========================================================== 3
 //Using recursion, return the sum of all of the positives numbers of an array of numbers.
 // posSum[1,-4,7,12] => 1 + 7 + 12 = 20
+function posSum(array){
+	if (array.length===0){
+		return 0
+	}else {
+		if(array[0] <0) {
+		return 0 +posSum(array.splice(1))
+	}
+	return array[0]+posSum(array.splice(1))
+}
+}
 
 //TODO: you code here
 
@@ -94,9 +114,16 @@ var bucketOfSloths = [
 // fullName(bucketOfSloths,0) //==> "Furry Danger Assassin"
 
 function fullName(array, index) {
-	return array[index].first+ " "+array[index].middle+" "+array[index].last
-
   //your code is here
+  var str="";
+  str= array[index].name.first+ " "+array[index].name.middle+" "+array[index].name.last
+ 
+  	if (str.indexOf("undefined")!==-1){
+       var res =  str.replace("undefined","")
+	    return res 
+  	} else{
+		return str
+	}
 }
 
 //  b- Write a function that takes an array of objects (like bucketOfSloths)
@@ -106,8 +133,19 @@ function fullName(array, index) {
 //  longestName(bucketOfSloths);
 // => {name: {first: "Furry", middle: "Danger", last: "Assassin"}, age: 2}
 
-function longestName(bucketOfSloths) {
-	for (var i in bucketOfSloths )
+function longestName(array) { 
+	var max = fullName(array,0).length;
+	var pos = 0
+	for (var i =1;  i<array.length; i++ ){
+
+		if (fullName(array,i).length>max){
+			console.log(array,i)
+			max = fullName(array,i).length
+			pos = i
+		}
+
+	}
+	return (array[pos])
   // TODO: Your code here
 }
 
